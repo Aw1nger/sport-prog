@@ -1,0 +1,23 @@
+stages:
+- build
+- trigger_job
+
+variables:
+  DOCKER_IMAGE_NAME: "nekto-z.gitlab.yandexcloud.net:5050/sport/back"
+  COMMIT_REF: $CI_COMMIT_REF_NAME-$CI_COMMIT_SHA
+
+before_script:
+- echo "$CI_JOB_TOKEN" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+
+build:
+  stage: build
+  script:
+  - docker build -t "$DOCKER_IMAGE_NAME" --tag "$DOCKER_IMAGE_NAME:latest" .
+  - docker push "$DOCKER_IMAGE_NAME:latest"
+  tags:
+  - sport
+
+trigger_job:
+  stage: trigger_job
+  trigger:
+    project: sport/docker-compose

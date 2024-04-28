@@ -1,0 +1,47 @@
+@import "./../../sass/var.scss";
+
+.btn {
+  &__outline {
+    color: #fff !important;
+    padding: 10px 32px;
+    font-weight: bold;
+    font-size: 18px;
+    border: $accent-color 1px solid !important;
+    border-radius: 10px !important;
+    background: transparent !important;
+  }
+
+  &__outline:hover,
+  &__outline:focus {
+    border: $accent-color 1px solid !important;
+    background: $accent-color !important;
+  }
+}
+
+.danger-btn {
+  font-family: "Rubik", sans-serif !important;
+  font-weight: 500 !important;
+  color: #ff0000 !important;
+  border: #ff0000 1px solid !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+}
+
+.danger-btn:hover {
+  color: #122b5b !important;
+  background: #ff0000 !important;
+}
+
+.submit-btn {
+  font-family: "Rubik", sans-serif !important;
+  font-weight: 500 !important;
+  color: #00ff0d !important;
+  border: #00ff0d 1px solid !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+}
+
+.submit-btn:hover {
+  color: #122b5b !important;
+  background: #00ff0d !important;
+}

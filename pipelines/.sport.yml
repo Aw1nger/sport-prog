@@ -1,0 +1,37 @@
+stages:
+- deploy
+- cleanup
+
+variables:
+  BACKEND_IMAGE_NAME: "nekto-z.gitlab.yandexcloud.net:5050/sport/back"
+  FRONTEND_IMAGE_NAME: "nekto-z.gitlab.yandexcloud.net:5050/sport/front"
+  COMMIT_REF: $CI_COMMIT_REF_NAME-$CI_COMMIT_SHA
+  TAG_LATEST: latest
+  DOCKER_COMPOSE_PATH: "sport.yml"
+  BACKEND_CONTAINER_NAME: "backend"
+  FRONTEND_CONTAINER_NAME: "frontend"
+
+before_script:
+  - docker login nekto-z.gitlab.yandexcloud.net:5050 -u a.behelev -p "$AUTH_TOKEN"
+
+deploy:
+  stage: deploy
+  script:
+    - docker pull "$BACKEND_IMAGE_NAME"
+    - docker pull "$FRONTEND_IMAGE_NAME"
+    - cp "$env" .env
+    - docker-compose -f $DOCKER_COMPOSE_PATH down
+    - docker-compose -f $DOCKER_COMPOSE_PATH pull $BACKEND_CONTAINER_NAME $FRONTEND_CONTAINER_NAME
+    - docker-compose -f $DOCKER_COMPOSE_PATH up -d $BACKEND_CONTAINER_NAME $FRONTEND_CONTAINER_NAME
+  tags:
+    - sport
+
+cleanup:
+  stage: cleanup
+  script:
+  - docker system prune -af
+  - docker volume prune -f
+  needs:
+  - deploy
+  tags:
+    - sport

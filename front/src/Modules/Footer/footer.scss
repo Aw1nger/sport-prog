@@ -1,0 +1,8 @@
+@import "./../../sass/var.scss";
+
+.footer {
+  &__wrapper {
+    padding: 50px 0;
+    background-color: $primary-color;
+  }
+}

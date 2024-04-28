@@ -1,0 +1,60 @@
+.form {
+  width: 400px;
+}
+
+.form-text {
+  text-align: center;
+  color: #fff !important;
+}
+
+.input-group {
+  position: relative;
+}
+
+.form-control {
+  border-radius: 10px !important;
+  color: #212529 !important;
+  background-color: #fff;
+  border-color: #ffcc00 !important;
+  outline: 0;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 204, 0, 0.25) !important;
+}
+
+.textarea {
+  color: #818181;
+}
+
+.palaceholder::placeholder {
+  color: #818181;
+}
+
+.form-check-input:checked {
+  background-color: #ffcc00 !important;
+  border-color: #ffcc00 !important;
+}
+
+.form-check-input:focus {
+  border-color: #ffcc00 !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(255, 204, 0, 0.25) !important;
+}
+
+.toggle-password {
+  z-index: 10;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .form {
+    width: 300px;
+  }
+}

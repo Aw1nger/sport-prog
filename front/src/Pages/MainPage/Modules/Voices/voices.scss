@@ -1,0 +1,16 @@
+@import "./../../../../sass/var.scss";
+
+.voices {
+  &__wrapper {
+    margin: 50px 0 0;
+  }
+
+  &__title {
+    color: $primary-color;
+  }
+
+  &__map {
+    height: 600px;
+    width: 100%;
+  }
+}

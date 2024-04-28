@@ -1,0 +1,11 @@
+.voicesForm {
+  &__wrapper {
+    background: url(./banner.jpg) center no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+
+  &__form {
+    padding: 450px 0 150px;  
+  }
+}

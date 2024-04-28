@@ -1,0 +1,14 @@
+@import "./../../sass/var.scss";
+
+.header {
+  padding: 10px 0;
+  background-color: $primary-color;
+  position: absolute;
+  z-index: 10;
+
+  .nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

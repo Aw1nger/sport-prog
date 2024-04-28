@@ -1,0 +1,5 @@
+psycopg2_binary==2.9.9
+Django==5.0.4
+django-extensions==3.2.3
+djangorestframework==3.15.1
+requests==2.31.0

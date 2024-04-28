@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  backend:
+    image: nekto-z.gitlab.yandexcloud.net:5050/sport/back:latest
+    container_name: backend
+    restart: always
+    ports:
+    - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+    - postgres
+    networks:
+    - shared_network
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    volumes:
+    - /database:/var/lib/postgresql/data
+    restart: always
+    ports:
+    - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: tracking_site
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+    networks:
+    - shared_network
+  
+  frontend:
+    image: nekto-z.gitlab.yandexcloud.net:5050/sport/front:latest
+    container_name: frontend
+    restart: always
+    ports:
+    - "3000:3000"
+    env_file:
+      - .env
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
